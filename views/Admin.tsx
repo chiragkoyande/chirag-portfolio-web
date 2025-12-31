@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import GlitchText from '../components/GlitchText';
-import { ResourceItem } from '../types';
-import { Lock, Unlock, Upload, Plus, Trash, AlertTriangle } from 'lucide-react';
+import { Lock, Unlock, Upload, Plus, Loader2 } from 'lucide-react';
+import { addResource } from '../services/supabaseService';
 
 const Admin: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   // Resource Form State
-  const [newItem, setNewItem] = useState<Partial<ResourceItem>>({ type: 'VIDEO' });
+  const [newItem, setNewItem] = useState<{
+    title: string;
+    type: 'VIDEO' | 'ARTICLE' | 'NOTE';
+    url: string;
+    description: string;
+  }>({ title: '', type: 'VIDEO', url: '', description: '' });
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,33 +29,34 @@ const Admin: React.FC = () => {
     }
   };
 
-  const handleAddResource = (e: React.FormEvent) => {
+  const handleAddResource = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newItem.title || !newItem.url) return;
 
-    const resource: ResourceItem = {
-      id: Math.random().toString(36).substr(2, 9),
-      title: newItem.title,
-      url: newItem.url,
-      type: newItem.type as 'VIDEO' | 'ARTICLE',
-      description: newItem.description || '',
-      dateAdded: Date.now()
-    };
+    setIsSubmitting(true);
+    setSuccessMessage('');
+    setError('');
 
-    // Save to LocalStorage (Simulation of Backend)
-    const existing = localStorage.getItem('chirag_resources');
-    const parsed = existing ? JSON.parse(existing) : [];
-    const updated = [...parsed, resource];
-    localStorage.setItem('chirag_resources', JSON.stringify(updated));
+    try {
+      const success = await addResource({
+        title: newItem.title,
+        url: newItem.url,
+        type: newItem.type,
+        description: newItem.description || null
+      });
 
-    alert('RESOURCE_INJECTED_SUCCESSFULLY');
-    setNewItem({ type: 'VIDEO', title: '', url: '', description: '' });
-  };
-
-  const handleClearData = () => {
-    if (window.confirm('WARNING: THIS WILL WIPE ALL LOCALLY STORED RESOURCES. CONFIRM?')) {
-      localStorage.removeItem('chirag_resources');
-      alert('MEMORY_WIPED');
+      if (success) {
+        setSuccessMessage('RESOURCE_INJECTED_SUCCESSFULLY');
+        setNewItem({ title: '', type: 'VIDEO', url: '', description: '' });
+        setTimeout(() => setSuccessMessage(''), 3000);
+      } else {
+        setError('INJECTION_FAILED // DATABASE_ERROR');
+      }
+    } catch (err) {
+      setError('CRITICAL_ERROR // CONNECTION_FAILED');
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -95,7 +103,7 @@ const Admin: React.FC = () => {
             <Unlock className="text-green-500" />
             <div>
               <h2 className="text-2xl font-display font-bold text-green-500">ADMIN_CONSOLE</h2>
-              <p className="text-xs font-mono text-green-500/50">WRITE_ACCESS_GRANTED</p>
+              <p className="text-xs font-mono text-green-500/50">SUPABASE_CONNECTED</p>
             </div>
           </div>
           <button onClick={() => setIsAuthenticated(false)} className="text-xs text-red-500 hover:underline">TERMINATE_SESSION</button>
@@ -105,6 +113,18 @@ const Admin: React.FC = () => {
           <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
             <Plus size={16} /> UPLOAD_NEW_RESOURCE
           </h3>
+
+          {successMessage && (
+            <div className="mb-4 p-3 bg-green-900/30 border border-green-500/50 text-green-400 font-mono text-sm animate-pulse">
+              ✓ {successMessage}
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-900/30 border border-red-500/50 text-red-400 font-mono text-sm">
+              ✗ {error}
+            </div>
+          )}
 
           <form onSubmit={handleAddResource} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -153,20 +173,21 @@ const Admin: React.FC = () => {
               />
             </div>
 
-            <div className="flex justify-between items-center pt-4">
-              <button
-                type="button"
-                onClick={handleClearData}
-                className="flex items-center gap-2 text-xs text-red-500 hover:text-red-400 border border-transparent hover:border-red-900 px-3 py-1 transition-all"
-              >
-                <AlertTriangle size={12} /> PURGE_LOCAL_DB
-              </button>
-
+            <div className="flex justify-end items-center pt-4">
               <button
                 type="submit"
-                className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-black font-bold px-6 py-2 text-sm transition-all"
+                disabled={isSubmitting}
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-black font-bold px-6 py-2 text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Upload size={16} /> INJECT_DATA
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" /> INJECTING...
+                  </>
+                ) : (
+                  <>
+                    <Upload size={16} /> INJECT_DATA
+                  </>
+                )}
               </button>
             </div>
           </form>
