@@ -6,9 +6,9 @@
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Click_Here-00ff00?style=for-the-badge)](https://chirag-portfolio-web.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-chiragkoyande-181717?style=for-the-badge&logo=github)](https://github.com/chiragkoyande)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-chiragkoyande-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/chiragkoyande)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-chiragkoyande-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/chirag-koyande-b03535259/)
 
-<img src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" alt="Portfolio Banner" width="100%"/>
+
 
 </div>
 
