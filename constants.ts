@@ -59,21 +59,4 @@ export const CERTIFICATIONS_DATA: Certification[] = [
   { id: 'c3', title: 'Certified in Cybersecurity (CC)', issuer: 'ISC2', date: 'In Progress', level: 'Expert' },
 ];
 
-export const INITIAL_RESOURCES: ResourceItem[] = [
-  {
-    id: 'r1',
-    title: 'OWASP Top 10 - 2021',
-    type: 'ARTICLE',
-    url: 'https://owasp.org/Top10/',
-    description: 'Standard awareness document for developers and web application security.',
-    dateAdded: Date.now()
-  },
-  {
-    id: 'r2',
-    title: 'React Security Best Practices',
-    type: 'VIDEO',
-    url: 'https://www.youtube.com/watch?v=IbS7ZCOq2g4', // Example link
-    description: 'Protecting XSS and dependencies in modern frontend stacks.',
-    dateAdded: Date.now()
-  }
-];
+export const INITIAL_RESOURCES: ResourceItem[] = [];
