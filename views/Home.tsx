@@ -9,18 +9,18 @@ const Home: React.FC = () => {
       <div className="scale-75 md:scale-100 transition-transform duration-700">
         <NeuralCore />
       </div>
-      
+
       {/* Main Typography */}
       <div className="mt-16 text-center space-y-6 relative">
         {/* Decorative lines behind text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-green-500/20 to-transparent"></div>
-        
-        <GlitchText 
-          text="CHIRAG_KOYANDE" 
-          as="h1" 
-          className="text-5xl md:text-7xl font-display font-black tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
+
+        <GlitchText
+          text="CHIRAG_KOYANDE"
+          as="h1"
+          className="text-3xl sm:text-5xl md:text-7xl font-display font-black tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] px-4"
         />
-        
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-sm md:text-base font-mono tracking-widest text-gray-400">
           <span className="hover:text-green-400 transition-colors cursor-default">BUILDER</span>
           <span className="hidden md:block text-green-500/50 text-[10px]">+</span>
