@@ -49,7 +49,6 @@ export const PROJECTS_DATA: Project[] = [
     status: 'SECURE',
     links: {
       github: 'https://github.com/chiragkoyande/SIEM'
-      demo: 'chiragk7-siem.hf.space/'
     }
   },
 ];
