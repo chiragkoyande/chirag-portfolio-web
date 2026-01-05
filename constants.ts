@@ -35,7 +35,7 @@ export const PROJECTS_DATA: Project[] = [
     securityLevel: 'CRITICAL',
     status: 'ANALYZING',
     links: {
-      github: 'https://github.com/chiragkoyande/linksniff-phishing-URL-detection-in-pdf-'
+      github: 'https://github.com/chiragkoyande/linksniff-phishing-URL-detection-in-pdf-',
       demo: 'https://linksniff-phishing-url-detection-in-pdf.onrender.com/'
     }
   },
@@ -48,7 +48,7 @@ export const PROJECTS_DATA: Project[] = [
     securityLevel: 'MODERATE',
     status: 'SECURE',
     links: {
-      github: 'https://github.com/chiragkoyande/SIEM'
+      github: 'https://github.com/chiragkoyande/SIEM',
     }
   },
 ];
