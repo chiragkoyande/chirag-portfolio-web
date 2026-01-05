@@ -1,10 +1,4 @@
-import { Project, TerminalLog, Certification, ResourceItem } from './types';
-
-export const INITIAL_LOGS: TerminalLog[] = [
-  { id: 'init-1', type: 'system', content: 'INITIALIZING NEURAL HANDSHAKE...', timestamp: Date.now() },
-  { id: 'init-2', type: 'system', content: 'LOADING PROFILE: CHIRAG_KOYANDE [BUILDER + BREAKER]', timestamp: Date.now() + 100 },
-  { id: 'init-3', type: 'output', content: 'System stable. Security protocols active. Waiting for input...', timestamp: Date.now() + 200 },
-];
+import { Project, Certification, ResourceItem } from './types';
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/chiragkoyande',

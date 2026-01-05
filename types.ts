@@ -9,13 +9,6 @@ export enum ViewState {
   ADMIN = 'ADMIN',
 }
 
-export interface TerminalLog {
-  id: string;
-  type: 'input' | 'output' | 'system' | 'error' | 'glitch';
-  content: string;
-  timestamp: number;
-}
-
 export interface Project {
   id: string;
   title: string;
@@ -56,10 +49,4 @@ export interface ShatterProps {
     demo?: string;
   };
   loading?: boolean;
-}
-
-export interface NeuralCommand {
-  action: 'navigate' | 'info' | 'error';
-  target?: string;
-  message: string;
 }

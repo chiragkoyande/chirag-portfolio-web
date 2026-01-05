@@ -3,20 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CyberCore // Breach Protocol</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Chirag Koyande | Builder + Breaker | Full-Stack Developer & Security Engineer</title>
+    <meta name="description" content="Portfolio of Chirag Koyande - A Hybrid Engineer combining Full-Stack Development with Cybersecurity. Building production-grade systems and securing them against real threats." />
+    <meta name="keywords" content="Chirag Koyande, Full-Stack Developer, Cybersecurity, DevSecOps, React, Node.js, Python, Security Engineer, Pune" />
+    <meta name="author" content="Chirag Koyande" />
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Chirag Koyande | Builder + Breaker" />
+    <meta property="og:description" content="Hybrid Engineer combining Full-Stack Development with Cybersecurity. Building and breaking for better security." />
+    <meta property="og:image" content="/images/og-preview.png" />
+    <meta property="og:url" content="https://chiragkoyande.dev" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chirag Koyande | Builder + Breaker" />
+    <meta name="twitter:description" content="Hybrid Engineer combining Full-Stack Development with Cybersecurity." />
+    <meta name="twitter:image" content="/images/og-preview.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwindcss.config = {
+        theme: {
+          extend: {
+            animation: {
+              'fadeSlideIn': 'fadeSlideIn 0.5s ease-out forwards',
+              'loading': 'loading 2s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeSlideIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              loading: {
+                '0%': { transform: 'scaleX(0)' },
+                '50%': { transform: 'scaleX(1)' },
+                '100%': { transform: 'scaleX(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    
     <style>
+      /* Base Styles */
       body {
         background-color: #000;
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
         overflow: hidden;
+        cursor: none;
       }
+      
       .font-display {
         font-family: 'Orbitron', sans-serif;
       }
-      /* Custom Scrollbar for Terminal */
+      
+      /* Hide cursor on mobile */
+      @media (pointer: coarse) {
+        body {
+          cursor: auto;
+        }
+      }
+      
+      /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -25,24 +85,73 @@
       }
       ::-webkit-scrollbar-thumb {
         background: #333;
-        border: 1px solid #0f0;
+        border: 1px solid #22c55e;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #444;
+      }
+      
+      /* Hide scrollbar for mobile nav */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      
+      /* Light Theme Overrides */
+      .light-theme {
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+      .light-theme ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .light-theme ::-webkit-scrollbar-thumb {
+        background: #94a3b8;
+        border-color: #22c55e;
+      }
+      
+      /* Animations */
+      @keyframes fadeSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .animate-fadeSlideIn {
+        animation: fadeSlideIn 0.5s ease-out forwards;
+      }
+      
+      @keyframes loading {
+        0% { transform: scaleX(0); }
+        50% { transform: scaleX(1); }
+        100% { transform: scaleX(0); }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
