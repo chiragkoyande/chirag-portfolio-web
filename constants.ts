@@ -23,7 +23,7 @@ export const PROJECTS_DATA: Project[] = [
     status: 'SECURE',
     links: {
       github: 'https://github.com/chiragkoyande/Opportune',
-      demo: '#'
+      demo: 'https://opportune-ebon.vercel.app'
     }
   },
   {
@@ -36,7 +36,7 @@ export const PROJECTS_DATA: Project[] = [
     status: 'ANALYZING',
     links: {
       github: 'https://github.com/chiragkoyande/LinkSniff',
-      demo: '#'
+      demo: 'https://linksniff-phishing-url-detection-in-pdf.onrender.com/'
     }
   },
   {
@@ -48,7 +48,8 @@ export const PROJECTS_DATA: Project[] = [
     securityLevel: 'MODERATE',
     status: 'SECURE',
     links: {
-      github: 'https://github.com/chiragkoyande/SentinelWatch'
+      github: 'https://github.com/chiragkoyande/SIEM'
+      demo: 'chiragk7-siem.hf.space/'
     }
   },
 ];
