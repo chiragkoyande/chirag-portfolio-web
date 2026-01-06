@@ -9,6 +9,7 @@ import PageTransition from './components/PageTransition';
 import Home from './views/Home';
 import Projects from './views/Projects';
 import About from './views/About';
+import Experience from './views/Experience';
 import Contact from './views/Contact';
 import Resources from './views/Resources';
 import Admin from './views/Admin';
@@ -22,6 +23,8 @@ const AppContent: React.FC = () => {
         return <Projects />;
       case ViewState.ABOUT:
         return <About />;
+      case ViewState.EXPERIENCE:
+        return <Experience />;
       case ViewState.CONTACT:
         return <Contact />;
       case ViewState.RESOURCES:

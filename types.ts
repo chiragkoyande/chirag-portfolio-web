@@ -4,9 +4,21 @@ export enum ViewState {
   HOME = 'HOME',
   PROJECTS = 'PROJECTS',
   ABOUT = 'ABOUT',
+  EXPERIENCE = 'EXPERIENCE',
   CONTACT = 'CONTACT',
   RESOURCES = 'RESOURCES',
   ADMIN = 'ADMIN',
+}
+
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  type: 'BUILDER' | 'BREAKER';
+  duration: string;
+  description: string[];
+  tools: string[];
+  status: 'ACTIVE' | 'COMPLETED';
 }
 
 export interface Project {

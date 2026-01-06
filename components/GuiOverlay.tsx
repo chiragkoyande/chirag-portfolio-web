@@ -1,6 +1,6 @@
 import React from 'react';
 import { ViewState } from '../types';
-import { LayoutGrid, User, Briefcase, Mail, FileText, ChevronRight, Github, Database, Sun, Moon } from 'lucide-react';
+import { LayoutGrid, User, Briefcase, Mail, FileText, ChevronRight, Github, Database, Sun, Moon, Zap } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -26,10 +26,10 @@ const GuiOverlay: React.FC<GuiOverlayProps> = ({ currentView, onNavigate }) => {
   const navItems = [
     { id: ViewState.HOME, label: 'Home', icon: LayoutGrid },
     { id: ViewState.ABOUT, label: 'About', icon: User },
+    { id: ViewState.EXPERIENCE, label: 'Experience', icon: Zap },
     { id: ViewState.PROJECTS, label: 'Projects', icon: Briefcase },
     { id: ViewState.RESOURCES, label: 'Resources', icon: Database },
     { id: ViewState.CONTACT, label: 'Contact', icon: Mail },
-    { id: ViewState.ADMIN, label: 'Admin', icon: Database },
   ];
 
   return (
