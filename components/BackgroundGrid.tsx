@@ -12,26 +12,45 @@ const BackgroundGrid: React.FC = () => {
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
 
-    const particles: { x: number, y: number, text: string, speed: number, alpha: number }[] = [];
-    const snippets = ['def init():', 'useEffect(() =>', '0x1A4', 'DROP TABLE', 'sudo su', 'npm install', 'console.log', 'import {', 'void main()', 'float32', '=>'];
+    const particles: { x: number, y: number, text: string, speed: number, alpha: number, size: number }[] = [];
+    const snippets = [
+      'def init():',
+      'useEffect(() =>',
+      '0x1A4F2B',
+      'SELECT * FROM',
+      'sudo rm -rf',
+      'npm install',
+      'console.log()',
+      'import React',
+      'void main()',
+      'async/await',
+      '=> {}',
+      'git push',
+      'docker run',
+      'kubectl apply',
+      'python3',
+      'localhost:3000'
+    ];
 
-    for (let i = 0; i < 30; i++) {
+    // More particles for better visibility
+    for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
         text: snippets[Math.floor(Math.random() * snippets.length)],
-        speed: 0.5 + Math.random(),
-        alpha: Math.random() * 0.5
+        speed: 0.3 + Math.random() * 0.8,
+        alpha: 0.15 + Math.random() * 0.35, // Much higher alpha (0.15-0.5)
+        size: 12 + Math.random() * 6 // Variable font size 12-18px
       });
     }
 
     const drawGrid = (offset: number) => {
       ctx.strokeStyle = 'rgba(0, 255, 65, 0.08)'; // Very faint hacker green
       ctx.lineWidth = 1;
-      
+
       // Isometric-ish grid simulation
       const gridSize = 40;
-      
+
       // Vertical moving lines
       for (let x = 0; x <= w; x += gridSize) {
         ctx.beginPath();
@@ -58,20 +77,34 @@ const BackgroundGrid: React.FC = () => {
       time += 0.5;
       drawGrid(time);
 
-      // Draw Code Particles
-      ctx.font = '12px "JetBrains Mono"';
+      // Draw Code Particles with enhanced visibility
       particles.forEach(p => {
         p.y -= p.speed;
-        if (p.y < 0) p.y = h;
-        
-        ctx.fillStyle = `rgba(168, 85, 247, ${p.alpha})`; // Purple tint
-        if (Math.random() > 0.5) ctx.fillStyle = `rgba(74, 222, 128, ${p.alpha})`; // Green tint
+        if (p.y < 0) {
+          p.y = h;
+          p.x = Math.random() * w; // Randomize x position on reset
+        }
 
+        // Use variable font size
+        ctx.font = `${Math.floor(p.size)}px "JetBrains Mono", monospace`;
+
+        // Alternate between green and cyan for better visibility
+        const isGreen = Math.random() > 0.4;
+        if (isGreen) {
+          ctx.fillStyle = `rgba(74, 222, 128, ${p.alpha})`; // Bright green
+        } else {
+          ctx.fillStyle = `rgba(34, 211, 238, ${p.alpha})`; // Cyan
+        }
+
+        // Draw text with slight shadow for glow effect
+        ctx.shadowColor = isGreen ? 'rgba(74, 222, 128, 0.5)' : 'rgba(34, 211, 238, 0.5)';
+        ctx.shadowBlur = 8;
         ctx.fillText(p.text, p.x, p.y);
-        
+        ctx.shadowBlur = 0; // Reset shadow
+
         // Random glitch flicker
         if (Math.random() > 0.98) {
-           p.text = snippets[Math.floor(Math.random() * snippets.length)];
+          p.text = snippets[Math.floor(Math.random() * snippets.length)];
         }
       });
 
@@ -90,9 +123,9 @@ const BackgroundGrid: React.FC = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-60"
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-80"
     />
   );
 };

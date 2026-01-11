@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ViewState } from './types';
 import { ThemeProvider } from './contexts/ThemeContext';
 import BackgroundGrid from './components/BackgroundGrid';
-import GuiOverlay from './components/GuiOverlay';
+import Navbar from './components/Navbar';
 import ScrollProgress from './components/ScrollProgress';
 import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
@@ -49,13 +49,13 @@ const AppContent: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000000_120%)] z-0"></div>
 
       {/* Navigation Overlay */}
-      <GuiOverlay currentView={view} onNavigate={setView} />
+      <Navbar currentView={view} onNavigate={setView} />
 
       {/* Scroll Progress Indicator */}
       <ScrollProgress />
 
-      {/* Main Content Area - with top padding for fixed navbar */}
-      <main className="relative z-10 w-full h-full pt-14 md:pt-16 overflow-y-auto transition-opacity duration-500">
+      {/* Main Content Area - with padding for fixed navbars */}
+      <main className="relative z-10 w-full h-full pt-14 md:pt-16 pb-24 md:pb-0 overflow-y-auto transition-opacity duration-500">
         {/* Page Transition Wrapper */}
         <PageTransition viewKey={view}>
           {renderView()}
