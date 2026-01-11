@@ -32,15 +32,15 @@ const BackgroundGrid: React.FC = () => {
       'localhost:3000'
     ];
 
-    // More particles for better visibility
-    for (let i = 0; i < 50; i++) {
+    // Subtle particles for background effect
+    for (let i = 0; i < 35; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
         text: snippets[Math.floor(Math.random() * snippets.length)],
-        speed: 0.3 + Math.random() * 0.8,
-        alpha: 0.15 + Math.random() * 0.35, // Much higher alpha (0.15-0.5)
-        size: 12 + Math.random() * 6 // Variable font size 12-18px
+        speed: 0.3 + Math.random() * 0.6,
+        alpha: 0.08 + Math.random() * 0.15, // Subtle alpha (0.08-0.23)
+        size: 11 + Math.random() * 3 // Font size 11-14px
       });
     }
 
@@ -96,9 +96,9 @@ const BackgroundGrid: React.FC = () => {
           ctx.fillStyle = `rgba(34, 211, 238, ${p.alpha})`; // Cyan
         }
 
-        // Draw text with slight shadow for glow effect
-        ctx.shadowColor = isGreen ? 'rgba(74, 222, 128, 0.5)' : 'rgba(34, 211, 238, 0.5)';
-        ctx.shadowBlur = 8;
+        // Draw text with subtle shadow
+        ctx.shadowColor = isGreen ? 'rgba(74, 222, 128, 0.3)' : 'rgba(34, 211, 238, 0.3)';
+        ctx.shadowBlur = 4;
         ctx.fillText(p.text, p.x, p.y);
         ctx.shadowBlur = 0; // Reset shadow
 
@@ -125,7 +125,7 @@ const BackgroundGrid: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-80"
+      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-65"
     />
   );
 };
