@@ -3,7 +3,6 @@ import { ViewState } from './types';
 import { ThemeProvider } from './contexts/ThemeContext';
 import BackgroundGrid from './components/BackgroundGrid';
 import Navbar from './components/Navbar';
-import ScrollProgress from './components/ScrollProgress';
 import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
 import Home from './views/Home';
@@ -51,8 +50,7 @@ const AppContent: React.FC = () => {
       {/* Navigation Overlay */}
       <Navbar currentView={view} onNavigate={setView} />
 
-      {/* Scroll Progress Indicator */}
-      <ScrollProgress />
+      {/* Scroll Progress Indicator - Removed */}
 
       {/* Main Content Area - with padding for fixed navbars */}
       <main className="relative z-10 w-full h-full pt-14 md:pt-24 pb-24 md:pb-0 overflow-y-auto transition-opacity duration-500">
