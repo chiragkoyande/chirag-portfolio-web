@@ -79,12 +79,12 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ currentView, onNavigate }) => {
     return (
         <div
             ref={navRef}
-            className="hidden md:flex items-center gap-1 relative bg-white/5 rounded-full p-1.5 border border-white/10"
+            className="hidden md:flex items-center gap-1 relative bg-white/5 rounded-full p-2 border border-white/10"
             onMouseLeave={handleMouseLeave}
         >
             {/* Sliding Pill Background */}
             <div
-                className="absolute top-1.5 bottom-1.5 rounded-full transition-all duration-300 ease-out pointer-events-none"
+                className="absolute top-2 bottom-2 rounded-full transition-all duration-300 ease-out pointer-events-none"
                 style={{
                     left: pillStyle.left,
                     width: pillStyle.width,
@@ -105,17 +105,17 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ currentView, onNavigate }) => {
                     data-view={item.id}
                     onClick={() => onNavigate(item.id)}
                     onMouseEnter={handleMouseEnter}
-                    className={`relative z-10 flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-200
+                    className={`relative z-10 flex items-center gap-2.5 px-5 py-2.5 rounded-full transition-colors duration-200
             ${currentView === item.id
                             ? 'text-green-400'
                             : 'text-gray-400 hover:text-white'
                         }`}
                 >
                     <item.icon
-                        size={14}
+                        size={16}
                         className={currentView === item.id ? 'animate-pulse' : ''}
                     />
-                    <span className="text-xs font-medium tracking-wide whitespace-nowrap">
+                    <span className="text-sm font-medium tracking-wide whitespace-nowrap">
                         {item.label}
                     </span>
                 </button>
