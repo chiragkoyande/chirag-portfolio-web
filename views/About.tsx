@@ -9,7 +9,7 @@ import { Download, Award, Terminal, Linkedin, Github } from 'lucide-react';
 const About: React.FC = () => {
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/Chirag_Koyande_Resume.pdf';
+    link.href = '/chiragk_cv.pdf';
     link.download = 'Chirag_Koyande_Resume.pdf';
     document.body.appendChild(link);
     link.click();

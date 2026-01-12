@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     // CV Download Logic
     const handleDownloadCV = () => {
         const link = document.createElement('a');
-        link.href = '/Chirag_Koyande_Resume.pdf';
+        link.href = '/chiragk_cv.pdf';
         link.download = 'Chirag_Koyande_Resume.pdf';
         document.body.appendChild(link);
         link.click();
