@@ -55,7 +55,7 @@ const AppContent: React.FC = () => {
       <ScrollProgress />
 
       {/* Main Content Area - with padding for fixed navbars */}
-      <main className="relative z-10 w-full h-full pt-14 md:pt-16 pb-24 md:pb-0 overflow-y-auto transition-opacity duration-500">
+      <main className="relative z-10 w-full h-full pt-14 md:pt-24 pb-24 md:pb-0 overflow-y-auto transition-opacity duration-500">
         {/* Page Transition Wrapper */}
         <PageTransition viewKey={view}>
           {renderView()}
