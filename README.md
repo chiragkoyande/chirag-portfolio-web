@@ -1,83 +1,22 @@
-<div align="center">
+# Chirag Koyande - Portfolio Website
 
-# 🛡️ CHIRAG KOYANDE | Builder + Breaker
+> **Builder + Breaker** | Full-Stack Developer × Security Engineer
 
-### A Cyberpunk-Themed Developer Portfolio
-
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Click_Here-00ff00?style=for-the-badge)](https://chirag-portfolio-web.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-chiragkoyande-181717?style=for-the-badge&logo=github)](https://github.com/chiragkoyande)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-chiragkoyande-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/chirag-koyande-b03535259/)
-
-
-
-</div>
+A modern, cyberpunk-themed personal portfolio built with React, TypeScript, and Tailwind CSS.
 
 ---
 
-## 📋 Overview
+## 🚀 Quick Start
 
-A **futuristic, cyberpunk-styled** developer portfolio designed to showcase projects, certifications, and skills with an immersive hacker/security aesthetic. Built with React, TypeScript, and Vite, featuring interactive terminal commands, glitch effects, and AI-powered chat.
+```bash
+# Install dependencies
+npm install
 
----
+# Start development server
+npm run dev
 
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 🖥️ **Interactive Terminal** | Type commands like `help`, `projects`, `about`, `contact` to navigate |
-| 🤖 **AI-Powered Chat** | Integrated Gemini AI for intelligent conversations about the portfolio |
-| 🎮 **Cyberpunk UI** | Glitch effects, scanlines, neon colors, and shattered card animations |
-| 📁 **Project Showcase** | Dynamic project cards with security status indicators and tech stacks |
-| 📜 **Certifications Display** | Professional credentials with level badges |
-| 📄 **Resume Download** | One-click CV download functionality |
-| 🔗 **Resource Hub** | Curated security/dev resources with admin management |
-| 📱 **Fully Responsive** | Optimized for desktop, tablet, and mobile devices |
-
----
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         FRONTEND (React + TypeScript)           │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
-│  │   App.tsx   │  │  Terminal   │  │      Views              │  │
-│  │  (Router)   │──│  Component  │──│  - Home.tsx             │  │
-│  │             │  │             │  │  - Projects.tsx         │  │
-│  └─────────────┘  └─────────────┘  │  - About.tsx            │  │
-│         │                          │  - Contact.tsx          │  │
-│         ▼                          │  - Resources.tsx        │  │
-│  ┌─────────────────────────────┐   │  - Admin.tsx            │  │
-│  │      State Management       │   └─────────────────────────┘  │
-│  │  (React useState/useEffect) │                                │
-│  └─────────────────────────────┘                                │
-│         │                                                       │
-│         ▼                                                       │
-│  ┌─────────────────────────────────────────────────────────┐    │
-│  │                    UI Components                         │    │
-│  │  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐  │    │
-│  │  │ ShatteredCard │ │  GlitchText   │ │ BackgroundGrid│  │    │
-│  │  └───────────────┘ └───────────────┘ └───────────────┘  │    │
-│  │  ┌───────────────┐ ┌───────────────┐ ┌───────────────┐  │    │
-│  │  │   NeuralCore  │ │  GuiOverlay   │ │   Terminal    │  │    │
-│  │  └───────────────┘ └───────────────┘ └───────────────┘  │    │
-│  └─────────────────────────────────────────────────────────┘    │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      EXTERNAL SERVICES                          │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────────┐     ┌─────────────────────────────┐    │
-│  │    Gemini AI API    │     │      Static Assets          │    │
-│  │  (geminiService.ts) │     │  - Project Images           │    │
-│  │  - Chat responses   │     │  - Resume PDF               │    │
-│  │  - Command parsing  │     │  - Fonts (Google Fonts)     │    │
-│  └─────────────────────┘     └─────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────────┘
+# Build for production
+npm run build
 ```
 
 ---
@@ -86,140 +25,194 @@ A **futuristic, cyberpunk-styled** developer portfolio designed to showcase proj
 
 ```
 chirag-portfolio-web/
-├── 📂 components/           # Reusable UI components
-│   ├── BackgroundGrid.tsx   # Animated grid background
-│   ├── GlitchText.tsx       # Text with glitch animation
-│   ├── GuiOverlay.tsx       # HUD-style overlay elements
-│   ├── NeuralCore.tsx       # AI chat interface
-│   ├── ShatteredCard.tsx    # Animated card component
-│   └── Terminal.tsx         # Interactive terminal
-├── 📂 views/                # Page components
-│   ├── Home.tsx             # Landing page
-│   ├── Projects.tsx         # Project showcase
-│   ├── About.tsx            # Bio & certifications
-│   ├── Contact.tsx          # Contact form
-│   ├── Resources.tsx        # Resource library
-│   └── Admin.tsx            # Admin panel
-├── 📂 services/             # External service integrations
-│   └── geminiService.ts     # Gemini AI integration
-├── 📂 public/               # Static assets
-│   ├── images/projects/     # Project screenshots
-│   └── Chirag_Koyande_Resume.pdf
-├── App.tsx                  # Main application component
-├── constants.ts             # Project data & configurations
-├── types.ts                 # TypeScript interfaces
-├── index.tsx                # Entry point
-├── index.html               # HTML template
-├── vite.config.ts           # Vite configuration
-└── package.json             # Dependencies
+│
+├── 📄 index.html          # Entry HTML with meta tags, fonts, and Tailwind config
+├── 📄 index.tsx           # React entry point
+├── 📄 App.tsx             # Main app component with routing logic
+├── 📄 index.css           # Global styles and animations
+│
+├── 📄 constants.ts        # App-wide constants (social links, projects, certifications)
+├── 📄 types.ts            # TypeScript type definitions
+│
+├── 📁 components/         # Reusable UI Components
+│   ├── 📁 Navbar/         # Navigation (Desktop + Mobile Bottom Nav)
+│   │   ├── index.tsx      # Main navbar wrapper
+│   │   ├── DesktopNav.tsx # Floating glassmorphism navbar
+│   │   └── MobileBottomNav.tsx # App-like bottom tab bar
+│   │
+│   ├── BackgroundGrid.tsx # Animated canvas background with code particles
+│   ├── CustomCursor.tsx   # Custom cursor effect (desktop only)
+│   ├── GlitchText.tsx     # Glitch animation text component
+│   ├── ShatteredCard.tsx  # Interactive card with shatter effect
+│   ├── NeuralCore.tsx     # 3D spinning core animation (Home page)
+│   ├── SkillsSection.tsx  # Skills display with typing animation
+│   ├── Testimonials.tsx   # Testimonials from LinkedIn connections
+│   ├── Timeline.tsx       # Timeline component for experience
+│   ├── Footer.tsx         # Site footer
+│   ├── ScrollProgress.tsx # Scroll progress indicator
+│   ├── PageTransition.tsx # Page transition wrapper
+│   ├── GuiOverlay.tsx     # HUD-style overlay elements
+│   └── BlogSection.tsx    # Blog/articles section
+│
+├── 📁 views/              # Page Components
+│   ├── Home.tsx           # Landing page with hero section
+│   ├── About.tsx          # About me, skills, certifications
+│   ├── Projects.tsx       # Project showcase
+│   ├── Experience.tsx     # Work experience timeline
+│   ├── Contact.tsx        # Contact form (Web3Forms API)
+│   ├── Resources.tsx      # Learning resources
+│   ├── Admin.tsx          # Admin panel (protected)
+│   └── NotFound.tsx       # 404 page
+│
+├── 📁 contexts/           # React Context Providers
+│   └── ThemeContext.tsx   # Dark/Light theme management
+│
+├── 📁 hooks/              # Custom React Hooks
+│   └── useScrollDirection.ts # Detect scroll direction for navbar
+│
+├── 📁 services/           # API Services
+│   └── aiService.ts       # Gemini AI integration
+│
+├── 📁 public/             # Static Assets
+│   ├── images/            # Images and profile photos
+│   │   ├── chirag-profile.jpg
+│   │   ├── testimonials/  # Testimonial profile photos
+│   │   └── projects/      # Project screenshots
+│   └── chiragk_cv.pdf     # Downloadable resume
+│
+└── 📄 vite.config.ts      # Vite configuration
 ```
+
+---
+
+## 🏗️ Architecture Overview
+
+### **Component Categories**
+
+| Category | Purpose | Examples |
+|----------|---------|----------|
+| **Layout** | App structure & navigation | `Navbar`, `Footer` |
+| **Effects** | Visual enhancements | `BackgroundGrid`, `CustomCursor`, `GlitchText` |
+| **Sections** | Page content blocks | `Testimonials`, `SkillsSection`, `Timeline` |
+| **Common** | Reusable UI elements | `ShatteredCard`, `PageTransition` |
+
+### **State Management**
+- `useState` for local component state
+- `Context API` for theme (dark/light mode)
+- No external state library needed (simple app)
+
+### **Routing**
+- Custom view-based routing via `ViewState` enum
+- No react-router (single-page app with section navigation)
+
+---
+
+## ✨ Key Features
+
+### 1. **Cyberpunk Design System**
+- Glassmorphism effects
+- Neon green accent color (#22c55e)
+- Matrix-style animated background
+- Custom cursor with trail effect
+
+### 2. **Mobile-First Responsive**
+- Bottom tab bar navigation on mobile (app-like UX)
+- Floating navbar on desktop
+- Touch-optimized interactions
+- Performance-optimized animations on mobile
+
+### 3. **Contact Form (Web3Forms)**
+- Direct email delivery (no mailto redirect)
+- Encrypted-style loading animation
+- Error handling with visual feedback
+
+### 4. **Real Testimonials**
+- LinkedIn connections with actual photos
+- Professional endorsements from industry leaders
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React 19, TypeScript |
-| **Build Tool** | Vite 6 |
-| **Styling** | TailwindCSS, Custom CSS |
-| **Icons** | Lucide React |
-| **AI Integration** | Google Gemini API |
-| **Fonts** | JetBrains Mono, Orbitron |
+| Technology | Purpose |
+|------------|---------|
+| **React 19** | UI Framework |
+| **TypeScript** | Type Safety |
+| **Tailwind CSS** | Styling |
+| **Vite** | Build Tool |
+| **Web3Forms** | Contact Form API |
+| **Lucide React** | Icons |
 
 ---
 
-## 🚀 Getting Started
+## 📝 How to Add/Modify Content
 
-### Prerequisites
-- Node.js (v18+)
-- npm or yarn
-- Gemini API Key (optional, for AI features)
+### Add a New Project
+Edit `constants.ts`:
+```typescript
+export const PROJECTS_DATA = [
+  {
+    id: 'new-project',
+    title: 'Project Name',
+    description: 'Description...',
+    tech: ['React', 'Node.js'],
+    github: 'https://github.com/...',
+    live: 'https://...',
+  },
+  // ...
+];
+```
 
-### Installation
+### Add a New Testimonial
+Edit `components/Testimonials.tsx`:
+```typescript
+const testimonials = [
+  {
+    id: '4',
+    name: 'New Person',
+    role: 'Title',
+    company: 'Company',
+    content: 'Testimonial text...',
+    linkedinUrl: 'https://linkedin.com/in/...',
+    avatar: '/images/testimonials/name.jpg',
+  },
+  // ...
+];
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/chiragkoyande/chirag-portfolio-web.git
-   cd chirag-portfolio-web
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables**
-   ```bash
-   # Create .env.local file
-   echo "GEMINI_API_KEY=your_api_key_here" > .env.local
-   ```
-
-4. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Open in browser**
-   ```
-   http://localhost:3000
-   ```
-
----
-
-## 🎮 Terminal Commands
-
-| Command | Action |
-|---------|--------|
-| `help` | Show available commands |
-| `projects` | Navigate to projects section |
-| `about` | View profile & certifications |
-| `contact` | Open contact form |
-| `resources` | Browse curated resources |
-| `clear` | Clear terminal output |
-| `echo [text]` | Echo back text |
+### Add a New Page
+1. Create `views/NewPage.tsx`
+2. Add to `ViewState` enum in `types.ts`
+3. Add case in `App.tsx` renderView()
+4. Add nav item in `constants.ts` NAV_ITEMS
 
 ---
 
-## 📸 Featured Projects
+## 🚀 Deployment
 
-### 🔹 Opportune
-Real-time aggregator for hackathons and internships with 40% reduced data fetch latency using Supabase Edge Functions.
+### Vercel (Recommended)
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-### 🔹 LinkSniff
-Forensic security tool analyzing PDFs to detect embedded phishing links using heuristic risk scoring.
+# Deploy
+vercel
+```
 
-### 🔹 SentinelWatch
-Custom-built SIEM system simulating SOC workflows with brute-force attack detection.
-
----
-
-## 🔒 Security Features
-
-- Environment variables for API keys (`.env.local`)
-- No sensitive data in client-side code
-- Secure external link handling (`rel="noopener noreferrer"`)
-- Input sanitization in terminal commands
+### Manual Build
+```bash
+npm run build
+# Output in /dist folder
+```
 
 ---
 
-## 📄 License
+## 📞 Contact
 
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 📬 Contact
-
-**Chirag Koyande**
-- 📧 Email: chiragk.dev@gmail.com
-- 💼 LinkedIn: [chiragkoyande](https://www.linkedin.com/in/chiragkoyande)
-- 🐙 GitHub: [chiragkoyande](https://github.com/chiragkoyande)
+- **Email**: chiragk.dev@gmail.com
+- **LinkedIn**: [linkedin.com/in/chiragkoyande](https://linkedin.com/in/chiragkoyande)
+- **GitHub**: [github.com/chiragkoyande](https://github.com/chiragkoyande)
 
 ---
 
-<div align="center">
-
-### ⚡ Built with passion by a Builder + Breaker ⚡
-
-</div>
+**Built with 💚 by Chirag Koyande**
