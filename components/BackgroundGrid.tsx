@@ -12,6 +12,10 @@ const BackgroundGrid: React.FC = () => {
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
 
+    // Detect mobile and reduce particles for performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 12 : 35;
+
     const particles: { x: number, y: number, text: string, speed: number, alpha: number, size: number }[] = [];
     const snippets = [
       'def init():',
@@ -33,14 +37,14 @@ const BackgroundGrid: React.FC = () => {
     ];
 
     // Subtle particles for background effect
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
         text: snippets[Math.floor(Math.random() * snippets.length)],
-        speed: 0.3 + Math.random() * 0.6,
-        alpha: 0.08 + Math.random() * 0.15, // Subtle alpha (0.08-0.23)
-        size: 11 + Math.random() * 3 // Font size 11-14px
+        speed: isMobile ? 0.2 + Math.random() * 0.3 : 0.3 + Math.random() * 0.6,
+        alpha: isMobile ? 0.05 + Math.random() * 0.08 : 0.08 + Math.random() * 0.15,
+        size: isMobile ? 10 : 11 + Math.random() * 3
       });
     }
 
@@ -125,7 +129,7 @@ const BackgroundGrid: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-65"
+      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-40 md:opacity-65 will-change-transform"
     />
   );
 };
