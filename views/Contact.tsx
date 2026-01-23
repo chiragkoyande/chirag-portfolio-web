@@ -6,44 +6,59 @@ import { Github, Linkedin, Mail, Send, Loader2, CheckCircle, Wifi } from 'lucide
 
 const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'IDLE' | 'ENCRYPTING' | 'TRANSMITTING' | 'SUCCESS'>('IDLE');
+  const [status, setStatus] = useState<'IDLE' | 'ENCRYPTING' | 'TRANSMITTING' | 'SUCCESS' | 'ERROR'>('IDLE');
   const [log, setLog] = useState('');
+
+  // Web3Forms Access Key
+  const WEB3FORMS_KEY = '47b4948a-3453-4636-953d-03eefb2dd3a7';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
 
-    // Start Simulation
-    setStatus('ENCRYPTING');
-    setLog('INITIATING PGP HANDSHAKE...');
+    try {
+      // Start Animation
+      setStatus('ENCRYPTING');
+      setLog('INITIATING SECURE HANDSHAKE...');
 
-    // Simulate Encryption Delay
-    await new Promise(r => setTimeout(r, 800));
-    setLog('PACKAGING PAYLOAD...');
+      await new Promise(r => setTimeout(r, 600));
+      setLog('ENCRYPTING PAYLOAD...');
 
-    // Simulate Transmission preparation
-    await new Promise(r => setTimeout(r, 800));
-    setStatus('TRANSMITTING');
-    setLog('ESTABLISHING MAILTO UPLINK...');
+      await new Promise(r => setTimeout(r, 600));
+      setStatus('TRANSMITTING');
+      setLog('TRANSMITTING TO SERVER...');
 
-    // Construct Mailto Link
-    // Using the specific email requested: chiragk.dev@gmail.com
-    const subject = `[CYBER_UPLINK] Message from ${formState.name}`;
-    const body = `SENDER_ID: ${formState.name}\nRETURN_PATH: ${formState.email}\n\n// PAYLOAD_START\n${formState.message}\n// PAYLOAD_END`;
-    const mailtoLink = `mailto:chiragk.dev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // Send to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          subject: `[PORTFOLIO] New message from ${formState.name}`,
+          from_name: 'Chirag Portfolio',
+        })
+      });
 
-    // Trigger Mail Client
-    window.location.href = mailtoLink;
+      const result = await response.json();
 
-    // Allow time for browser to handle the protocol handler
-    await new Promise(r => setTimeout(r, 1500));
-
-    // Success State
-    setStatus('SUCCESS');
-    setLog('PROTOCOL HANDOFF COMPLETE.');
-
-    // Reset Form
-    setFormState({ name: '', email: '', message: '' });
+      if (result.success) {
+        setStatus('SUCCESS');
+        setLog('TRANSMISSION COMPLETE. MESSAGE DELIVERED.');
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(result.message || 'Transmission failed');
+      }
+    } catch (error) {
+      setStatus('ERROR');
+      setLog('TRANSMISSION FAILED. TRY AGAIN.');
+      console.error('Form submission error:', error);
+    }
 
     // Reset back to Idle after delay
     setTimeout(() => {
@@ -69,14 +84,18 @@ const Contact: React.FC = () => {
             <div className="absolute inset-0 z-20 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center space-y-4 font-mono">
               {status === 'SUCCESS' ? (
                 <CheckCircle size={48} className="text-green-500 animate-[bounce_1s_infinite]" />
+              ) : status === 'ERROR' ? (
+                <div className="w-12 h-12 rounded-full border-2 border-red-500 flex items-center justify-center">
+                  <span className="text-red-500 text-2xl font-bold">✕</span>
+                </div>
               ) : (
                 <Loader2 size={48} className="text-green-500 animate-spin" />
               )}
 
-              <div className="text-green-400 text-sm tracking-widest">{log}</div>
+              <div className={`text-sm tracking-widest ${status === 'ERROR' ? 'text-red-400' : 'text-green-400'}`}>{log}</div>
 
-              {/* Simulated Progress Bar */}
-              {status !== 'SUCCESS' && (
+              {/* Progress Bar - only show during loading */}
+              {(status === 'ENCRYPTING' || status === 'TRANSMITTING') && (
                 <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
                   <div className="h-full bg-green-500 animate-[loading_2s_ease-in-out_infinite] w-full origin-left scale-x-0"></div>
                 </div>
