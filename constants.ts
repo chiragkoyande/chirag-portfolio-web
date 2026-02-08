@@ -35,7 +35,7 @@ export const EXPERIENCE_DATA: Experience[] = [
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/chiragkoyande',
-  linkedin: 'https://www.linkedin.com/in/chiragkoyande',
+  linkedin: 'https://www.linkedin.com/in/chirag-koyande-b03535259/',
   email: 'chiragk.dev@gmail.com'
 };
 
